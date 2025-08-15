@@ -6,8 +6,8 @@ import pytest
 import sys
 import os
 
-# Adicionar o diretório src ao path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+# Adicionar o diretório deeprl_neural ao path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'deeprl_neural'))
 
 from neural_network.matrix import Matrix, zeros, ones, identity, random_matrix, vector
 from neural_network.activation import sigmoid, relu, tanh, linear, softmax

@@ -1,48 +1,92 @@
 [build-system]
-requires = ["setuptools>=45", "wheel"]
+requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "deep-rl-neural-network"
-version = "0.1.0"
-description = "Deep Learning Neural Network with Reinforcement Learning - Pure Python Implementation"
+name = "deeprl-neural"
+version = "1.0.0"
+description = "Pure Python Deep Reinforcement Learning Library with Neural Networks"
 authors = [
     {name = "Deep RL Team", email = "team@deeprl.dev"}
 ]
 license = {text = "MIT"}
 readme = "README.md"
-requires-python = ">=3.7"
-keywords = ["machine-learning", "neural-network", "reinforcement-learning", "deep-learning", "python"]
+requires-python = ">=3.8"
+keywords = [
+    "machine-learning", 
+    "neural-network", 
+    "reinforcement-learning", 
+    "deep-learning", 
+    "python", 
+    "pure-python",
+    "ai",
+    "artificial-intelligence",
+    "q-learning",
+    "dqn"
+]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Education",
+    "Operating System :: OS Independent",
+    "Natural Language :: English",
 ]
 
 # No external dependencies - Pure Python implementation
-dependencies = [
-    "pytest>=7.4.4",
-    "pytest-cov>=4.1.0",
-]
+dependencies = []
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=6.0",
-    "pytest-cov>=2.0",
-    "pytest-xdist>=2.0",
-    "black>=22.0",
-    "flake8>=4.0",
-    "mypy>=0.910",
+    "pytest>=8.0",
+    "pytest-cov>=4.0",
+    "pytest-xdist>=3.0",
+    "black>=23.0",
+    "flake8>=5.0,<6.0",
+    "mypy>=1.0",
+    "pre-commit>=3.0",
+]
+test = [
+    "pytest>=8.0",
+    "pytest-cov>=4.0",
+]
+docs = [
+    "sphinx>=7.0",
+    "sphinx-rtd-theme>=1.3",
+    "myst-parser>=2.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/deeprl-team/deeprl-neural"
+Documentation = "https://deeprl-neural.readthedocs.io"
+Repository = "https://github.com/deeprl-team/deeprl-neural"
+Issues = "https://github.com/deeprl-team/deeprl-neural/issues"
+Changelog = "https://github.com/deeprl-team/deeprl-neural/blob/main/CHANGELOG.md"
+
+[project.scripts]
+deeprl-demo = "deeprl_neural.examples:run_demo"
+deeprl-train = "deeprl_neural.cli:train_command"
+deeprl-test = "deeprl_neural.cli:test_command"
+
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["deeprl_neural"]
+include = ["deeprl_neural*"]
+
+[tool.setuptools.package-dir]
+"" = "."
+
+[dependency-groups]
+dev = [
+    "build>=1.2.2.post1",
+    "pytest>=8.3.5",
+]

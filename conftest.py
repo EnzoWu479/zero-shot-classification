@@ -8,9 +8,9 @@ import pytest
 
 # Adicionar src ao path Python para todos os testes
 project_root = os.path.dirname(os.path.abspath(__file__))
-src_path = os.path.join(project_root, 'src')
+src_path = os.path.join(project_root, 'deeprl_neural')
 if src_path not in sys.path:
-    sys.path.insert(0, src_path)
+    sys.path.insert(0, project_root)
 
 @pytest.fixture(scope="session")
 def project_root():
@@ -30,13 +30,13 @@ def temp_dir(tmp_path):
 @pytest.fixture
 def sample_neural_network():
     """Fixture que cria uma rede neural simples para testes"""
-    from neural_network.network import NeuralNetwork
+    from deeprl_neural.neural_network.network import NeuralNetwork
     return NeuralNetwork([2, 3, 1])
 
 @pytest.fixture
 def sample_grid_world():
     """Fixture que cria um GridWorld simples para testes"""
-    from environment.grid_world import GridWorld
+    from deeprl_neural.environment.grid_world import GridWorld
     return GridWorld(size=3)
 
 # Configurações de marcadores para pytest

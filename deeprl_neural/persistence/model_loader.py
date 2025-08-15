@@ -8,13 +8,13 @@ import json
 import os
 from typing import Dict, Any, Union, Optional
 
-from neural_network.network import NeuralNetwork
-from neural_network.layer import Layer
-from neural_network.neuron import Neuron
-from neural_network.activation import ActivationFunction
-from reinforcement_learning.agents import QLearningAgent, DQNAgent
-from reinforcement_learning.experience_replay import ExperienceReplayBuffer, Experience
-from reinforcement_learning.policies import (
+from ..neural_network.network import NeuralNetwork
+from ..neural_network.layer import Layer
+from ..neural_network.neuron import Neuron
+from ..neural_network.activation import ActivationFunction
+from ..reinforcement_learning.agents import QLearningAgent, DQNAgent
+from ..reinforcement_learning.experience_replay import ExperienceReplayBuffer, Experience
+from ..reinforcement_learning.policies import (
     EpsilonGreedyPolicy, BoltzmannPolicy, UCBPolicy,
     RandomPolicy, GreedyPolicy, ThompsonSamplingPolicy
 )
@@ -306,7 +306,7 @@ class ModelLoader:
         Returns:
             Dicionário com listas de modelos por tipo
         """
-        from persistence.model_saver import ModelSaver
+        from ..persistence.model_saver import ModelSaver
         saver = ModelSaver(self.base_path)
         return saver.list_saved_models()
     
@@ -320,7 +320,7 @@ class ModelLoader:
         Returns:
             Informações do modelo
         """
-        from persistence.model_saver import ModelSaver
+        from ..persistence.model_saver import ModelSaver
         saver = ModelSaver(self.base_path)
         return saver.get_model_info(filename)
 

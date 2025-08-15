@@ -15,10 +15,10 @@ import math
 from typing import List, Dict, Any, Union, Optional
 from abc import ABC, abstractmethod
 
-from neural_network.network import NeuralNetwork
-from neural_network.matrix import Matrix
-from reinforcement_learning.experience_replay import ExperienceReplayBuffer
-from reinforcement_learning.policies import PolicyFactory
+from ..neural_network.network import NeuralNetwork
+from ..neural_network.matrix import Matrix
+from .experience_replay import ExperienceReplayBuffer
+from .policies import PolicyFactory
 
 
 class RLAgent(ABC):
@@ -170,7 +170,7 @@ class DQNAgent(RLAgent):
     
     def store_experience(self, state, action: int, reward: float, next_state, done: bool):
         """Armazena experiência no buffer de replay"""
-        from reinforcement_learning.experience_replay import Experience
+        from .experience_replay import Experience
         experience = Experience(state, action, reward, next_state, done)
         self.replay_buffer.add_experience(experience)
     

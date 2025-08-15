@@ -341,7 +341,7 @@ class Layer:
         )
         
         # Substituir neurônios por versões carregadas
-        from neural_network.neuron import Neuron
+        from ..neural_network.neuron import Neuron
         layer.neurons = [Neuron.from_dict(neuron_data) for neuron_data in data["neurons"]]
         
         return layer

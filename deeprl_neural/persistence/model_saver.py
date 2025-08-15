@@ -9,8 +9,8 @@ import os
 from datetime import datetime
 from typing import Dict, Any, Union
 
-from neural_network.network import NeuralNetwork
-from reinforcement_learning.agents import QLearningAgent, DQNAgent
+from ..neural_network.network import NeuralNetwork
+from ..reinforcement_learning.agents import QLearningAgent, DQNAgent
 
 
 class ModelSaver:
