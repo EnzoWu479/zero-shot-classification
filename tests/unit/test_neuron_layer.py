@@ -6,7 +6,7 @@ import sys
 import os
 
 # Adicionar o diretório src ao path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'src'))
 
 from neural_network.neuron import Neuron, create_neurons
 from neural_network.layer import Layer

@@ -7,7 +7,7 @@ import os
 import tempfile
 
 # Adicionar o diretório src ao path
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'src'))
 
 from neural_network.network import NeuralNetwork, create_simple_network
 from neural_network.matrix import Matrix
