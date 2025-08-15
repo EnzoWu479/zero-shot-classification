@@ -475,3 +475,68 @@ class PolicyComparison:
                 }
         
         return summary
+
+
+class PolicyFactory:
+    """Factory para criação de políticas de exploração"""
+    
+    @staticmethod
+    def create_policy(policy_type: str, action_size: int, **kwargs) -> ExplorationPolicy:
+        """
+        Cria uma política de exploração do tipo especificado
+        
+        Args:
+            policy_type: Tipo da política ('epsilon_greedy', 'boltzmann', 'ucb', etc.)
+            action_size: Número de ações possíveis
+            **kwargs: Parâmetros específicos da política
+        
+        Returns:
+            Instância da política especificada
+        """
+        policy_type = policy_type.lower()
+        
+        if policy_type == 'epsilon_greedy':
+            return EpsilonGreedyPolicy(
+                epsilon_start=kwargs.get('initial_epsilon', 1.0),
+                epsilon_decay=kwargs.get('decay_rate', 0.995),
+                epsilon_end=kwargs.get('min_epsilon', 0.01)
+            )
+        
+        elif policy_type == 'boltzmann':
+            return BoltzmannPolicy(
+                temperature_start=kwargs.get('initial_temperature', 2.0),
+                temperature_decay=kwargs.get('decay_rate', 0.99),
+                temperature_end=kwargs.get('min_temperature', 0.1)
+            )
+        
+        elif policy_type == 'ucb':
+            return UCBPolicy(
+                c=kwargs.get('confidence_level', 1.0)
+            )
+        
+        elif policy_type == 'greedy':
+            return GreedyPolicy()
+        
+        elif policy_type == 'random':
+            return RandomPolicy()
+        
+        elif policy_type == 'thompson_sampling':
+            return ThompsonSamplingPolicy(
+                alpha_init=kwargs.get('alpha_init', 1.0),
+                beta_init=kwargs.get('beta_init', 1.0)
+            )
+        
+        else:
+            raise ValueError(f"Tipo de política não suportado: {policy_type}")
+    
+    @staticmethod
+    def get_available_policies() -> list:
+        """Retorna lista de políticas disponíveis"""
+        return [
+            'epsilon_greedy',
+            'boltzmann', 
+            'ucb',
+            'greedy',
+            'random',
+            'thompson_sampling'
+        ]
