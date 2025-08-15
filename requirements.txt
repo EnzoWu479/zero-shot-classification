@@ -1,0 +1,22 @@
+# Este projeto NÃO usa bibliotecas externas!
+# Utiliza apenas bibliotecas padrão do Python 3.7+
+
+# Bibliotecas padrão utilizadas:
+# - json (serialização de dados)
+# - random (geração de números aleatórios)
+# - math (funções matemáticas)
+# - pickle (serialização alternativa)
+# - logging (sistema de logs)
+# - os (operações do sistema)
+# - sys (informações do sistema)
+# - time (medição de tempo)
+# - typing (type hints)
+
+# Para desenvolvimento e testes (opcionais):
+# - unittest (testes unitários - biblioteca padrão)
+
+# Requisitos do sistema:
+# Python >= 3.7
+
+# Nenhuma instalação necessária!
+# Execute: python examples/simple_training.py
