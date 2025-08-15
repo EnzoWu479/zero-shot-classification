@@ -306,6 +306,45 @@ class Layer:
     
     def __repr__(self) -> str:
         return f"Layer({self.num_neurons}, {self.num_inputs}, {self.activation})"
+    
+    def to_dict(self) -> dict:
+        """
+        Converte a camada para um dicionário serializável
+        
+        Returns:
+            Dicionário com os dados da camada
+        """
+        return {
+            "num_neurons": self.num_neurons,
+            "num_inputs": self.num_inputs,
+            "activation": self.activation,
+            "layer_name": self.layer_name,
+            "neurons": [neuron.to_dict() for neuron in self.neurons]
+        }
+    
+    @classmethod
+    def from_dict(cls, data: dict) -> 'Layer':
+        """
+        Cria uma camada a partir de um dicionário
+        
+        Args:
+            data: Dicionário com os dados da camada
+            
+        Returns:
+            Camada reconstruída
+        """
+        layer = cls(
+            num_neurons=data["num_neurons"],
+            num_inputs=data["num_inputs"],
+            activation=data["activation"],
+            layer_name=data["layer_name"]
+        )
+        
+        # Substituir neurônios por versões carregadas
+        from neural_network.neuron import Neuron
+        layer.neurons = [Neuron.from_dict(neuron_data) for neuron_data in data["neurons"]]
+        
+        return layer
 
 
 # Funções utilitárias
