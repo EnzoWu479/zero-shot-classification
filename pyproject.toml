@@ -29,7 +29,10 @@ classifiers = [
 ]
 
 # No external dependencies - Pure Python implementation
-dependencies = []
+dependencies = [
+    "pytest>=7.4.4",
+    "pytest-cov>=4.1.0",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -43,5 +46,3 @@ dev = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
-requires-python = ">=3.11"
-dependencies = []
