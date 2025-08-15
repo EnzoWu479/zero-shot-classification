@@ -236,6 +236,43 @@ class Neuron:
     
     def __repr__(self) -> str:
         return f"Neuron({self.num_inputs}, {self.activation_name})"
+    
+    def to_dict(self) -> dict:
+        """
+        Converte o neurônio para um dicionário serializável
+        
+        Returns:
+            Dicionário com os dados do neurônio
+        """
+        return {
+            "num_inputs": self.num_inputs,
+            "activation_name": self.activation_name,
+            "weights": self.get_weights(),
+            "bias": self.bias
+        }
+    
+    @classmethod
+    def from_dict(cls, data: dict) -> 'Neuron':
+        """
+        Cria um neurônio a partir de um dicionário
+        
+        Args:
+            data: Dicionário com os dados do neurônio
+            
+        Returns:
+            Neurônio reconstruído
+        """
+        neuron = cls(
+            num_inputs=data["num_inputs"],
+            activation=data["activation_name"],
+            weight_init_method='zeros'
+        )
+        
+        # Restaurar pesos e bias
+        neuron.set_weights(data["weights"])
+        neuron.bias = data["bias"]
+        
+        return neuron
 
 
 # Funções utilitárias
