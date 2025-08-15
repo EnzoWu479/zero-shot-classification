@@ -211,11 +211,8 @@ class DQNAgent(RLAgent):
             states.append(state)
             targets.append(target_q_values)
         
-        # Treinar rede neural
-        states_matrix = Matrix(states)
-        targets_matrix = Matrix(targets)
-        
-        loss = self.network.train_step(states_matrix, targets_matrix, self.learning_rate)
+        # Treinar rede neural usando train_batch
+        loss = self.network.train_batch(states, targets, self.learning_rate)
         
         # Atualizar política de exploração
         self.policy.update()
